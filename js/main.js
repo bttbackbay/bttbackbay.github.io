@@ -183,13 +183,42 @@
   const nav = document.querySelector('.nav');
   let lastScrollY = window.scrollY;
 
+  // Section colors for nav background
+  const sectionColors = {
+    'home': 'var(--color-deep-blue)',
+    'programs': 'var(--color-green-dark)',
+    'schedule': 'var(--color-deep-blue)',
+    'instructors': 'var(--color-deep-blue)',
+    'why-btt': 'var(--color-blue-dark)',
+    'contact': 'var(--color-deep-blue)'
+  };
+
   window.addEventListener('scroll', function() {
     if (nav) {
+      // Change shadow on scroll
       if (window.scrollY > 50) {
         nav.style.boxShadow = '0 4px 12px rgba(0,0,0,0.15)';
+        nav.classList.add('scrolled');
       } else {
         nav.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)';
+        nav.classList.remove('scrolled');
       }
+
+      // Change nav color based on current section
+      const sections = document.querySelectorAll('section[id]');
+      let currentSection = 'home';
+
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        const sectionHeight = section.offsetHeight;
+
+        if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+          currentSection = section.getAttribute('id');
+        }
+      });
+
+      const color = sectionColors[currentSection] || 'var(--color-deep-blue)';
+      nav.style.backgroundColor = color;
     }
     lastScrollY = window.scrollY;
   }, { passive: true });

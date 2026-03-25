@@ -165,6 +165,11 @@ img {
   height: var(--nav-height);
   background: var(--color-nav-bg);
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.nav.scrolled {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
 .nav-container {
@@ -322,7 +327,7 @@ img {
 .hero-bg {
   position: absolute;
   inset: 0;
-  background-image: url('https://images.unsplash.com/photo-1555597673-b21d5c935865?w=1920&q=80');
+  background-image: url('https://res.cloudinary.com/display97/image/upload/f_auto,q_auto,w_1920/7851/Brazilian-Jiu-Jitsu-278904.jpg');
   background-size: cover;
   background-position: center;
 }
