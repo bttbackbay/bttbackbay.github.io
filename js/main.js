@@ -89,21 +89,29 @@
       const submitButton = contactForm.querySelector('button[type="submit"]');
       const originalButtonText = submitButton.textContent;
 
+      // Check honeypot field — if filled, a bot likely submitted the form
+      const honeypot = contactForm.querySelector('input[name="bot-field"]');
+      if (honeypot && honeypot.value) {
+        // Silently pretend success to avoid tipping off bots
+        if (formContainer) formContainer.style.display = 'none';
+        if (formSuccess) formSuccess.classList.add('active');
+        return;
+      }
+
       // Disable button and show loading state
       submitButton.disabled = true;
       submitButton.textContent = 'Sending...';
 
+      // Encode form data as URL-encoded string for Netlify Forms
       const formData = new FormData(contactForm);
+      const urlEncoded = new URLSearchParams(formData).toString();
 
-      // Replace with your actual Formspree endpoint
-      const formSpreeEndpoint = contactForm.action || 'https://formspree.io/f/YOUR_FORM_ID';
-
-      fetch(formSpreeEndpoint, {
+      fetch('/', {
         method: 'POST',
-        body: formData,
         headers: {
-          'Accept': 'application/json'
-        }
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: urlEncoded
       })
       .then(response => {
         if (response.ok) {
@@ -128,10 +136,7 @@
           }, 5000);
 
         } else {
-          // Error: show error message
-          return response.json().then(data => {
-            throw new Error(data.error || 'There was a problem submitting the form. Please try again.');
-          });
+          throw new Error('submission_failed');
         }
       })
       .catch(error => {
@@ -139,8 +144,8 @@
         submitButton.disabled = false;
         submitButton.textContent = originalButtonText;
 
-        // Show error
-        alert(error.message || 'There was a problem submitting the form. Please try again.');
+        // Show a human-readable error message
+        alert('Something went wrong sending your message. Please try again, or contact us directly by phone or email.');
 
         console.error('Form submission error:', error);
       });
