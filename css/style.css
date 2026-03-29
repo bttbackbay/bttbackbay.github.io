@@ -2,6 +2,11 @@
    BTT Back Bay BJJ - Main Stylesheet
    =================================== */
 
+/* ===== Utility ===== */
+.hidden {
+  display: none !important;
+}
+
 /* ===== CSS Custom Properties ===== */
 :root {
   /* Brand Colors */

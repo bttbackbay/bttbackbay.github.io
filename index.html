@@ -719,5 +719,14 @@
 
   <!-- JavaScript -->
   <script src="/js/main.js" defer></script>
+  <!-- Netlify Forms detection fallback (hidden, required for static scanner) -->
+  <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+    <input type="text" name="name">
+    <input type="email" name="email">
+    <input type="tel" name="phone">
+    <select name="program"><option value="">Select</option></select>
+    <textarea name="message"></textarea>
+    <input name="bot-field">
+  </form>
 </body>
 </html>
