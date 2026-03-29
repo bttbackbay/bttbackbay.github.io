@@ -102,16 +102,15 @@
       submitButton.disabled = true;
       submitButton.textContent = 'Sending...';
 
-      // Encode form data as URL-encoded string for Netlify Forms
+      // Submit via FormSubmit.co
       const formData = new FormData(contactForm);
-      const urlEncoded = new URLSearchParams(formData).toString();
+      formData.append('_subject', 'New inquiry from BTT Back Bay website');
+      formData.append('_captcha', 'false');
+      formData.append('_template', 'table');
 
-      fetch('/', {
+      fetch('https://formsubmit.co/info@bttbackbay.com', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        body: urlEncoded
+        body: formData
       })
       .then(response => {
         if (response.ok) {
