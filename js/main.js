@@ -77,7 +77,7 @@
     });
   });
 
-  // ===== Form Submission (Formspree) =====
+  // ===== Form Submission (Netlify Forms) =====
   const contactForm = document.querySelector('.contact-form');
   const formSuccess = document.querySelector('.form-success');
   const formContainer = document.querySelector('.form-container');
@@ -102,15 +102,13 @@
       submitButton.disabled = true;
       submitButton.textContent = 'Sending...';
 
-      // Submit via FormSubmit.co
+      // Submit via Netlify Forms (native HTML submission)
       const formData = new FormData(contactForm);
-      formData.append('_subject', 'New inquiry from BTT Back Bay website');
-      formData.append('_captcha', 'false');
-      formData.append('_template', 'table');
 
-      fetch('https://formsubmit.co/info@bttbackbay.com', {
+      fetch('/', {
         method: 'POST',
-        body: formData
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData).toString()
       })
       .then(response => {
         if (response.ok) {
@@ -122,18 +120,6 @@
             formSuccess.classList.add('active');
             formSuccess.setAttribute('role', 'alert');
           }
-
-          // Announce to screen readers
-          const liveRegion = document.createElement('div');
-          liveRegion.setAttribute('aria-live', 'polite');
-          liveRegion.setAttribute('class', 'sr-only');
-          liveRegion.textContent = 'Your message has been sent successfully. We will contact you soon!';
-          document.body.appendChild(liveRegion);
-
-          setTimeout(() => {
-            document.body.removeChild(liveRegion);
-          }, 5000);
-
         } else {
           throw new Error('submission_failed');
         }
@@ -143,7 +129,6 @@
         submitButton.disabled = false;
         submitButton.textContent = originalButtonText;
 
-        // Show a human-readable error message
         alert('Something went wrong sending your message. Please try again, or contact us directly by phone or email.');
 
         console.error('Form submission error:', error);
