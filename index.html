@@ -28,7 +28,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600;700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=Lexend:wght@300;400;600&display=swap" rel="stylesheet">
 
   <!-- Stylesheet -->
   <link rel="stylesheet" href="/css/style.css">
@@ -59,6 +59,60 @@
   </script>
 </head>
 <body>
+  <!-- Noise Filter -->
+  <svg style="position:absolute;width:0;height:0">
+    <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter>
+  </svg>
+
+  <!-- SVG Sprite -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+    <symbol id="icon-person" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="5" r="3"></circle>
+      <path d="M5 21v-7a4 4 0 0 1 4-4h6a4 4 0 0 1 4 4v7"></path>
+    </symbol>
+    <symbol id="icon-layers" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+      <path d="M2 17l10 5 10-5"></path>
+      <path d="M2 12l10 5 10-5"></path>
+    </symbol>
+    <symbol id="icon-chevron-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polyline points="6,9 12,15 18,9"></polyline>
+    </symbol>
+    <symbol id="icon-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+    </symbol>
+    <symbol id="icon-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+      <circle cx="9" cy="7" r="4"></circle>
+      <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+      <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+    </symbol>
+    <symbol id="icon-play-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="10"></circle>
+      <polygon points="10 8 16 12 10 16 10 8"></polygon>
+    </symbol>
+    <symbol id="icon-map-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+      <circle cx="12" cy="10" r="3"></circle>
+    </symbol>
+    <symbol id="icon-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+    </symbol>
+    <symbol id="icon-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+      <polyline points="22,6 12,13 2,6"></polyline>
+    </symbol>
+    <symbol id="icon-instagram" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+    </symbol>
+    <symbol id="icon-facebook" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+    </symbol>
+    <symbol id="icon-youtube" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+    </symbol>
+  </svg>
+
   <!-- Skip Link for Accessibility -->
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
@@ -97,7 +151,7 @@
 
   <main id="main-content">
     <!-- Hero Section -->
-    <section id="home" class="hero" aria-labelledby="hero-title">
+    <section id="home" class="hero" aria-labelledby="hero-title" data-nav-color="var(--color-nav-bg)">
       <div class="hero-bg"></div>
       <div class="hero-overlay"></div>
 
@@ -113,14 +167,12 @@
       </div>
 
       <a href="#programs" class="hero-scroll" aria-label="Scroll to programs">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <polyline points="6,9 12,15 18,9"></polyline>
-        </svg>
+        <svg><use href="#icon-chevron-down"/></svg>
       </a>
     </section>
 
     <!-- Programs Section -->
-    <section id="programs" class="programs" aria-labelledby="programs-title">
+    <section id="programs" class="programs" aria-labelledby="programs-title" data-nav-color="var(--color-nav-bg)">
       <div class="container">
         <h2 id="programs-title" class="section-title">Our Programs</h2>
 
@@ -128,10 +180,7 @@
           <!-- Kids BJJ -->
           <article class="card">
             <div class="card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="5" r="3"></circle>
-                <path d="M5 21v-7a4 4 0 0 1 4-4h6a4 4 0 0 1 4 4v7"></path>
-              </svg>
+              <svg><use href="#icon-person"/></svg>
             </div>
             <h3>Kids BJJ</h3>
             <p>Building confidence, discipline, and fitness through martial arts. Our kids program teaches life skills alongside self-defense in a fun, safe environment.</p>
@@ -141,10 +190,7 @@
           <!-- Adults BJJ -->
           <article class="card">
             <div class="card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="5" r="3"></circle>
-                <path d="M5 21v-7a4 4 0 0 1 4-4h6a4 4 0 0 1 4 4v7"></path>
-              </svg>
+              <svg><use href="#icon-person"/></svg>
             </div>
             <h3>Adults BJJ</h3>
             <p>From complete beginners to experienced practitioners, our adult classes offer comprehensive training in Brazilian Jiu-Jitsu techniques and philosophy.</p>
@@ -154,11 +200,7 @@
           <!-- No-Gi -->
           <article class="card">
             <div class="card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
-                <path d="M2 17l10 5 10-5"></path>
-                <path d="M2 12l10 5 10-5"></path>
-              </svg>
+              <svg><use href="#icon-layers"/></svg>
             </div>
             <h3>No-Gi Submission Grappling</h3>
             <p>Focus on wrestling and grappling without the traditional gi. Perfect for MMA preparation or developing a well-rounded grappling game.</p>
@@ -173,7 +215,7 @@
     </section>
 
     <!-- Schedule Section -->
-    <section id="schedule" class="schedule" aria-labelledby="schedule-title">
+    <section id="schedule" class="schedule" aria-labelledby="schedule-title" data-nav-color="var(--color-nav-bg)">
       <div class="container">
         <h2 id="schedule-title" class="section-title">Class Schedule</h2>
 
@@ -193,7 +235,7 @@
             </thead>
             <tbody>
               <tr>
-                <td class="time-col" scope="row">6:00 AM</td>
+                <td class="time-col">6:00 AM</td>
                 <td>
                   <div class="class-info">
                     <span class="class-name">Adults BJJ NoGi</span>
@@ -223,7 +265,7 @@
                 <td></td>
               </tr>
               <tr>
-                <td class="time-col" scope="row">9:00 AM</td>
+                <td class="time-col">9:00 AM</td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -238,7 +280,7 @@
                 <td></td>
               </tr>
               <tr>
-                <td class="time-col" scope="row">10:00 AM</td>
+                <td class="time-col">10:00 AM</td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -258,7 +300,7 @@
                 </td>
               </tr>
               <tr>
-                <td class="time-col" scope="row">11:30 AM</td>
+                <td class="time-col">11:30 AM</td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -273,7 +315,7 @@
                 <td></td>
               </tr>
               <tr>
-                <td class="time-col" scope="row">12:00 PM</td>
+                <td class="time-col">12:00 PM</td>
                 <td>
                   <div class="class-info">
                     <span class="class-name">Adults Gi BJJ</span>
@@ -298,7 +340,7 @@
                 <td></td>
               </tr>
               <tr>
-                <td class="time-col" scope="row">1:00 PM</td>
+                <td class="time-col">1:00 PM</td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -313,11 +355,11 @@
                 <td></td>
               </tr>
               <tr>
-                <td class="time-col" scope="row">4:00 PM</td>
+                <td class="time-col">4:00 PM</td>
                 <td></td>
                 <td>
                   <div class="class-info">
-                    <span class="class-name">Kids BJJ 1&2</span>
+                    <span class="class-name">Kids BJJ 1&amp;2</span>
                     <span><span class="belt-dot belt-white"></span>Ages 5-12</span>
                   </div>
                 </td>
@@ -329,7 +371,7 @@
                 </td>
                 <td>
                   <div class="class-info">
-                    <span class="class-name">Kids BJJ 1&2</span>
+                    <span class="class-name">Kids BJJ 1&amp;2</span>
                     <span><span class="belt-dot belt-white"></span>Ages 5-12</span>
                   </div>
                 </td>
@@ -338,7 +380,7 @@
                 <td></td>
               </tr>
               <tr>
-                <td class="time-col" scope="row">5:00 PM</td>
+                <td class="time-col">5:00 PM</td>
                 <td>
                   <div class="class-info">
                     <span class="class-name">Kids BJJ</span>
@@ -373,7 +415,7 @@
                 <td></td>
               </tr>
               <tr>
-                <td class="time-col" scope="row">6:20 PM</td>
+                <td class="time-col">6:20 PM</td>
                 <td>
                   <div class="class-info">
                     <span class="class-name">Adults All Levels</span>
@@ -407,19 +449,19 @@
                 <td></td>
                 <td></td>
               </tr>
-            </tbody>          </table>
+            </tbody>
+          </table>
         </div>
 
         <div class="schedule-cta">
           <p>Not sure where to start? Book a free intro class and we'll find the perfect program for you.</p>
-          <br>
           <a href="#contact" class="btn btn-primary">Book a Free Intro Class</a>
         </div>
       </div>
     </section>
 
     <!-- Instructors Section -->
-    <section id="instructors" class="instructors" aria-labelledby="instructors-title">
+    <section id="instructors" class="instructors" aria-labelledby="instructors-title" data-nav-color="var(--color-nav-bg)">
       <div class="container">
         <h2 id="instructors-title" class="section-title">Meet Your Instructors</h2>
 
@@ -429,7 +471,7 @@
             <img src="https://res.cloudinary.com/display97/image/upload/f_auto,q_auto,w_400/7851/Brazilian-Jiu-Jitsu-278904.jpg" alt="Instructor teaching Jiu-Jitsu technique" loading="lazy" width="400" height="280">
             <div class="info">
               <h3>Professor Rafael Costa</h3>
-              <p class="rank">3rd Degree Black Belt • Head Instructor & Founder</p>
+              <p class="rank">3rd Degree Black Belt &bull; Head Instructor &amp; Founder</p>
               <p>Over 15 years of Brazilian Jiu-Jitsu experience with multiple regional and national competition titles. Dedicated to creating a welcoming, technical training environment for students of all levels.</p>
             </div>
           </article>
@@ -439,7 +481,7 @@
             <img src="https://res.cloudinary.com/display97/image/upload/f_auto,q_auto,w_400/7851/Kids-Martial-Arts-278899.jpg" alt="Instructor demonstrating technique" loading="lazy" width="400" height="280">
             <div class="info">
               <h3>Coach Marcus Kim</h3>
-              <p class="rank">Black Belt • Adults Program Director</p>
+              <p class="rank">Black Belt &bull; Adults Program Director</p>
               <p>Specializes in modern competition techniques and No-Gi grappling. Known for breaking down complex movements into digestible steps. Passionate about helping adult beginners build confidence through Jiu-Jitsu.</p>
             </div>
           </article>
@@ -449,7 +491,7 @@
             <img src="https://res.cloudinary.com/display97/image/upload/q_auto:eco,f_auto,w_400/7851/Get-the-Best-Brazilian-Jiu-Jitsu-Training-in-Boston-278898.png" alt="Instructor working with students" loading="lazy" width="400" height="280">
             <div class="info">
               <h3>Coach Sarah Martinez</h3>
-              <p class="rank">Brown Belt • Kids Program Lead</p>
+              <p class="rank">Brown Belt &bull; Kids Program Lead</p>
               <p>Has been teaching martial arts to children for over 8 years. Focuses on building discipline, focus, and self-esteem through age-appropriate BJJ instruction. Creates a fun, safe environment where kids learn valuable life skills.</p>
             </div>
           </article>
@@ -458,7 +500,7 @@
     </section>
 
     <!-- Why BTT Section -->
-    <section id="about" class="why-btt" aria-labelledby="why-btt-title">
+    <section id="about" class="why-btt" aria-labelledby="why-btt-title" data-nav-color="var(--color-nav-bg)">
       <div class="container">
         <span class="why-btt-prehead">Why Choose BTT Back Bay</span>
         <h2 id="why-btt-title">More Than Just Martial Arts</h2>
@@ -466,43 +508,22 @@
 
         <div class="why-btt-features">
           <div class="why-btt-feature">
-            <div class="why-btt-feature-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-              </svg>
-            </div>
+            <div class="why-btt-feature-icon"><svg><use href="#icon-star"/></svg></div>
             <p class="why-btt-feature-text">World-class instruction from certified black belts</p>
           </div>
 
           <div class="why-btt-feature">
-            <div class="why-btt-feature-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                <circle cx="9" cy="7" r="4"></circle>
-                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-              </svg>
-            </div>
+            <div class="why-btt-feature-icon"><svg><use href="#icon-users"/></svg></div>
             <p class="why-btt-feature-text">Welcoming community for all skill levels</p>
           </div>
 
           <div class="why-btt-feature">
-            <div class="why-btt-feature-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10"></circle>
-                <polygon points="10 8 16 12 10 16 10 8"></polygon>
-              </svg>
-            </div>
+            <div class="why-btt-feature-icon"><svg><use href="#icon-play-circle"/></svg></div>
             <p class="why-btt-feature-text">Competition-proven curriculum</p>
           </div>
 
           <div class="why-btt-feature">
-            <div class="why-btt-feature-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                <circle cx="12" cy="10" r="3"></circle>
-              </svg>
-            </div>
+            <div class="why-btt-feature-icon"><svg><use href="#icon-map-pin"/></svg></div>
             <p class="why-btt-feature-text">Convenient Back Bay location</p>
           </div>
         </div>
@@ -514,7 +535,7 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="contact" aria-labelledby="contact-title">
+    <section id="contact" class="contact" aria-labelledby="contact-title" data-nav-color="var(--color-nav-bg)">
       <div class="container">
         <h2 id="contact-title" class="section-title">Get Started Today</h2>
 
@@ -538,7 +559,7 @@
 
               <div class="form-field">
                 <label for="phone">Phone Number</label>
-                <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567">
+                <input type="tel" id="phone" name="phone" placeholder="(617) 555-1234">
               </div>
 
               <div class="form-field">
@@ -570,10 +591,7 @@
           <div class="contact-info">
             <div class="contact-info-item">
               <div class="contact-info-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                  <circle cx="12" cy="10" r="3"></circle>
-                </svg>
+                <svg><use href="#icon-map-pin"/></svg>
               </div>
               <div class="contact-info-content">
                 <h4>Location</h4>
@@ -583,9 +601,7 @@
 
             <div class="contact-info-item">
               <div class="contact-info-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                </svg>
+                <svg><use href="#icon-phone"/></svg>
               </div>
               <div class="contact-info-content">
                 <h4>Phone</h4>
@@ -595,10 +611,7 @@
 
             <div class="contact-info-item">
               <div class="contact-info-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                  <polyline points="22,6 12,13 2,6"></polyline>
-                </svg>
+                <svg><use href="#icon-mail"/></svg>
               </div>
               <div class="contact-info-content">
                 <h4>Email</h4>
@@ -626,19 +639,13 @@
 
             <div class="contact-social">
               <a href="https://instagram.com/bttbackbay" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                </svg>
+                <svg><use href="#icon-instagram"/></svg>
               </a>
               <a href="https://facebook.com/bttbackbay" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Facebook">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                </svg>
+                <svg><use href="#icon-facebook"/></svg>
               </a>
               <a href="https://youtube.com/@bttbackbay" target="_blank" rel="noopener noreferrer" aria-label="Subscribe on YouTube">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                </svg>
+                <svg><use href="#icon-youtube"/></svg>
               </a>
             </div>
           </div>
@@ -657,19 +664,13 @@
           <p class="footer-description">World-class Brazilian Jiu-Jitsu training in the heart of Boston's Back Bay. Transform your life through martial arts.</p>
           <div class="footer-social">
             <a href="https://instagram.com/bttbackbay" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram">
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-              </svg>
+              <svg><use href="#icon-instagram"/></svg>
             </a>
             <a href="https://facebook.com/bttbackbay" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Facebook">
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-              </svg>
+              <svg><use href="#icon-facebook"/></svg>
             </a>
             <a href="https://youtube.com/@bttbackbay" target="_blank" rel="noopener noreferrer" aria-label="Subscribe on YouTube">
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-              </svg>
+              <svg><use href="#icon-youtube"/></svg>
             </a>
           </div>
         </div>
@@ -689,30 +690,22 @@
         <div>
           <h3 class="footer-heading">Contact</h3>
           <div class="footer-contact-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-              <circle cx="12" cy="10" r="3"></circle>
-            </svg>
+            <svg><use href="#icon-map-pin"/></svg>
             <p>Back Bay, Boston, MA 02116</p>
           </div>
           <div class="footer-contact-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-            </svg>
+            <svg><use href="#icon-phone"/></svg>
             <p><a href="tel:+16175551234">(617) 555-1234</a></p>
           </div>
           <div class="footer-contact-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-              <polyline points="22,6 12,13 2,6"></polyline>
-            </svg>
+            <svg><use href="#icon-mail"/></svg>
             <p><a href="mailto:info@bttbackbay.com">info@bttbackbay.com</a></p>
           </div>
         </div>
       </div>
 
       <div class="footer-bottom">
-        <p>&copy; 2025 BTT Back Bay. All rights reserved. | Brazilian Top Team® is a registered trademark.</p>
+        <p>&copy; <span id="copyright-year">2025</span> BTT Back Bay. All rights reserved. | Brazilian Top Team&reg; is a registered trademark.</p>
       </div>
     </div>
   </footer>
