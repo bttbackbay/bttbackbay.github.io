@@ -7,12 +7,12 @@
   'use strict';
 
   // ===== Constants =====
-  var SCROLL_THRESHOLD = 50;
-  var NAV_OFFSET = 100;
-  var OBSERVER_ROOT_MARGIN = '-100px 0px -70% 0px';
+  const SCROLL_THRESHOLD = 50;
+  const NAV_OFFSET = 100;
+  const OBSERVER_ROOT_MARGIN = '-100px 0px -70% 0px';
 
   // ===== Copyright Year =====
-  var yearEl = document.getElementById('copyright-year');
+  const yearEl = document.getElementById('copyright-year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
   // ===== Mobile Navigation =====
@@ -29,7 +29,7 @@
       hamburger.setAttribute('aria-expanded', expanded);
     });
 
-    mobileLinks.forEach(link => {
+    mobileLinks.forEach(function(link) {
       link.addEventListener('click', function() {
         hamburger.classList.remove('active');
         mobileMenu.classList.remove('active');
@@ -54,7 +54,7 @@
   }
 
   // ===== Smooth Scroll for Anchor Links =====
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
     anchor.addEventListener('click', function(e) {
       const href = this.getAttribute('href');
       if (href === '#') return;
@@ -107,18 +107,15 @@
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: new URLSearchParams(formData).toString()
       })
-      .then(response => {
+      .then(function(response) {
         if (response.ok) {
           if (formContainer) formContainer.style.display = 'none';
-          if (formSuccess) {
-            formSuccess.classList.add('active');
-            formSuccess.setAttribute('role', 'alert');
-          }
+          if (formSuccess) formSuccess.classList.add('active');
         } else {
           throw new Error('submission_failed');
         }
       })
-      .catch(error => {
+      .catch(function(error) {
         submitButton.disabled = false;
         submitButton.textContent = originalButtonText;
         alert('Something went wrong sending your message. Please try again, or contact us directly by phone or email.');
@@ -138,13 +135,13 @@
     };
 
     const observer = new IntersectionObserver(function(entries) {
-      entries.forEach(entry => {
+      entries.forEach(function(entry) {
         if (entry.isIntersecting) {
           const id = entry.target.getAttribute('id');
-          navLinks.forEach(link => {
+          navLinks.forEach(function(link) {
             link.classList.remove('active');
             const href = link.getAttribute('href');
-            if (href === `#${id}`) {
+            if (href === '#' + id) {
               link.classList.add('active');
             }
           });
@@ -152,7 +149,7 @@
       });
     }, observerOptions);
 
-    sections.forEach(section => observer.observe(section));
+    sections.forEach(function(section) { observer.observe(section); });
   }
 
   // ===== Scroll Header Enhancement =====
@@ -166,12 +163,12 @@
         nav.classList.remove('scrolled');
       }
 
-      var sectionEls = document.querySelectorAll('section[id]');
-      var currentColor = 'var(--color-nav-bg)';
+      const sectionEls = document.querySelectorAll('section[id]');
+      let currentColor = 'var(--color-nav-bg)';
 
       sectionEls.forEach(function(section) {
-        var sectionTop = section.offsetTop - NAV_OFFSET;
-        var sectionHeight = section.offsetHeight;
+        const sectionTop = section.offsetTop - NAV_OFFSET;
+        const sectionHeight = section.offsetHeight;
         if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
           currentColor = section.dataset.navColor || 'var(--color-nav-bg)';
         }
@@ -182,10 +179,10 @@
   }, { passive: true });
 
   // ===== Scroll Reveal =====
-  var revealEls = document.querySelectorAll('.section-title, .card, .instructor-card, .why-btt-feature, .why-btt-image, .contact-layout, .schedule-table-container');
+  const revealEls = document.querySelectorAll('.section-title, .card, .instructor-card, .why-btt-feature, .why-btt-image, .contact-layout, .schedule-table-container');
   revealEls.forEach(function(el) { el.classList.add('reveal'); });
 
-  var revealObserver = new IntersectionObserver(function(entries) {
+  const revealObserver = new IntersectionObserver(function(entries) {
     entries.forEach(function(entry) {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
@@ -202,7 +199,7 @@
   // ===== Skip Link Enhancement =====
   const skipLink = document.querySelector('.skip-link');
   if (skipLink) {
-    skipLink.addEventListener('click', function(e) {
+    skipLink.addEventListener('click', function() {
       const target = document.querySelector(this.getAttribute('href'));
       if (target) {
         target.setAttribute('tabindex', '-1');

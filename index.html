@@ -25,6 +25,8 @@
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 
+  <link rel="canonical" href="https://bttbackbay.github.io">
+
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -543,10 +545,11 @@
           <!-- Contact Form -->
           <div class="form-container">
             <form class="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
-                <input type="hidden" name="form-name" value="contact">
-                <p class="hidden" aria-hidden="true">
-                  <label>Don't fill this out: <input name="bot-field"></label>
-                </p>
+              <input type="hidden" name="form-name" value="contact">
+              <p class="hidden" aria-hidden="true">
+                <label>Don't fill this out: <input name="bot-field"></label>
+              </p>
+
               <div class="form-field">
                 <label for="name">Full Name <span aria-hidden="true">*</span></label>
                 <input type="text" id="name" name="name" required placeholder="Enter your full name" aria-required="true">
@@ -582,7 +585,7 @@
               <button type="submit" class="btn btn-primary btn-full">Send Message</button>
             </form>
 
-            <div class="form-success" role="alert" aria-live="polite">
+            <div class="form-success" role="status" aria-live="polite">
               <p>Thank you for your message! We'll be in touch within 24 hours to schedule your free trial class.</p>
             </div>
           </div>

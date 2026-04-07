@@ -359,6 +359,21 @@ img {
   color: var(--color-gold);
 }
 
+.nav-link-mobile-cta {
+  background: var(--color-gold);
+  color: var(--color-base) !important;
+  text-align: center;
+  margin: 8px 16px;
+  padding: 14px 24px !important;
+  clip-path: polygon(4px 0, 100% 0, calc(100% - 4px) 100%, 0 100%);
+  border-bottom: none !important;
+}
+
+.nav-link-mobile-cta:hover {
+  background: var(--color-text) !important;
+  color: var(--color-base) !important;
+}
+
 /* ===== Hero Section ===== */
 .hero {
   position: relative;
