@@ -320,22 +320,7 @@ img {
   transform: translateY(-7px) rotate(-45deg);
 }
 
-/* Mobile Menu */
-.mobile-menu {
-  display: none;
-  position: absolute;
-  top: var(--nav-height);
-  left: 0;
-  right: 0;
-  background: var(--color-surface);
-  padding: 8px 0;
-  box-shadow: var(--shadow-lg);
-  border-bottom: 1px solid var(--color-gold-dim);
-}
-
-.mobile-menu.active {
-  display: block;
-}
+/* Mobile Menu — animated via max-height in UX Enhancements section */
 
 .mobile-menu a {
   display: block;
@@ -1398,4 +1383,400 @@ section::before {
     opacity: 1;
     transform: none;
   }
+
+  .hero-prehead,
+  .hero h1,
+  .hero-subtitle,
+  .hero-buttons {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* =============================================
+   UX ENHANCEMENTS - Fight Night Cinematic v2
+   ============================================= */
+
+/* ===== Hero Cinematic Entrance ===== */
+.hero-prehead,
+.hero h1,
+.hero-subtitle,
+.hero-buttons {
+  opacity: 0;
+  transform: translateY(24px);
+  animation: heroEntrance 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.hero-prehead { animation-delay: 0.2s; }
+.hero h1 { animation-delay: 0.4s; }
+.hero-subtitle { animation-delay: 0.6s; }
+.hero-buttons { animation-delay: 0.8s; }
+
+@keyframes heroEntrance {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== Mobile Nav Animation ===== */
+.mobile-menu {
+  display: block;
+  position: absolute;
+  top: var(--nav-height);
+  left: 0;
+  right: 0;
+  background: var(--color-surface);
+  padding: 8px 0;
+  box-shadow: var(--shadow-lg);
+  border-bottom: 1px solid var(--color-gold-dim);
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.25s ease,
+              transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+.mobile-menu.active {
+  max-height: 500px;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* ===== Schedule Day Tabs (Mobile) ===== */
+.schedule-tabs {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: 0 0 20px;
+  margin-bottom: 0;
+}
+
+.schedule-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.schedule-tab {
+  flex-shrink: 0;
+  padding: 10px 18px;
+  font-family: var(--font-heading);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted);
+  background: var(--color-surface-raised);
+  border: 1px solid rgba(200,168,78,0.06);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  clip-path: polygon(3px 0, 100% 0, calc(100% - 3px) 100%, 0 100%);
+  min-height: 44px;
+  min-width: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.schedule-tab:hover {
+  color: var(--color-gold);
+  border-color: var(--color-gold-dim);
+}
+
+.schedule-tab.active {
+  background: var(--color-gold);
+  color: var(--color-base);
+  border-color: var(--color-gold);
+}
+
+/* Schedule Cards (Mobile) */
+.schedule-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.schedule-card {
+  background: var(--color-surface-raised);
+  border: 1px solid rgba(200,168,78,0.06);
+  padding: 18px 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  transition: border-color var(--transition-fast);
+  clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+}
+
+.schedule-card:hover {
+  border-color: var(--color-gold-dim);
+}
+
+.schedule-card-time {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  color: var(--color-gold);
+  font-size: 14px;
+  white-space: nowrap;
+  min-width: 72px;
+  letter-spacing: 0.02em;
+}
+
+.schedule-card-info {
+  flex: 1;
+}
+
+.schedule-card-name {
+  font-weight: 600;
+  color: var(--color-text);
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.schedule-card-meta {
+  color: var(--color-text-muted);
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.schedule-card-day {
+  font-family: var(--font-heading);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-dim);
+  background: rgba(200,168,78,0.06);
+  padding: 3px 8px;
+  clip-path: polygon(2px 0, 100% 0, calc(100% - 2px) 100%, 0 100%);
+}
+
+.schedule-card-empty {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--color-text-dim);
+  font-size: 14px;
+}
+
+/* Mobile: show tabs + cards, hide table */
+@media (max-width: 767px) {
+  .schedule-table-container {
+    display: none;
+  }
+  .schedule-tabs,
+  .schedule-cards {
+    display: flex;
+  }
+  .schedule-cards {
+    display: grid;
+  }
+}
+
+/* Desktop: show table, hide tabs + cards */
+@media (min-width: 768px) {
+  .schedule-tabs,
+  .schedule-cards {
+    display: none;
+  }
+}
+
+/* ===== Form Validation States ===== */
+.form-field input:valid:not(:placeholder-shown),
+.form-field select:valid:not([value=""]),
+.form-field textarea:valid:not(:placeholder-shown) {
+  border-color: rgba(29, 185, 84, 0.3);
+}
+
+.form-field.error input,
+.form-field.error select,
+.form-field.error textarea {
+  border-color: #E53E3E;
+  box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.1);
+}
+
+.form-field .field-error {
+  color: #E53E3E;
+  font-size: 12px;
+  margin-top: 6px;
+  display: none;
+  font-weight: 400;
+}
+
+.form-field.error .field-error {
+  display: block;
+}
+
+/* Submit button loading state */
+.btn-primary.loading {
+  position: relative;
+  color: transparent;
+  pointer-events: none;
+}
+
+.btn-primary.loading::after {
+  content: '';
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  top: 50%;
+  left: 50%;
+  margin: -9px 0 0 -9px;
+  border: 2px solid var(--color-base);
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: btnSpin 0.6s linear infinite;
+}
+
+@keyframes btnSpin {
+  to { transform: rotate(360deg); }
+}
+
+/* ===== Button Press Effect ===== */
+.btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn-primary:active {
+  transform: scale(0.97) translateY(0);
+}
+
+/* ===== Scroll-to-Top Button ===== */
+.scroll-top {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 900;
+  width: 48px;
+  height: 48px;
+  background: var(--color-gold);
+  color: var(--color-base);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(16px);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease, background 0.2s ease;
+  clip-path: polygon(4px 0, 100% 0, calc(100% - 4px) 100%, 0 100%);
+  box-shadow: 0 4px 20px rgba(200,168,78,0.3);
+}
+
+.scroll-top.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.scroll-top:hover {
+  background: var(--color-text);
+  box-shadow: 0 6px 28px rgba(200,168,78,0.4);
+}
+
+.scroll-top:active {
+  transform: scale(0.93);
+}
+
+/* ===== Enhanced Touch Targets (Mobile) ===== */
+@media (max-width: 767px) {
+  .mobile-menu a {
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    padding: 14px 24px;
+  }
+
+  .contact-social a,
+  .footer-social a {
+    width: 44px;
+    height: 44px;
+  }
+
+  .card-link {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .schedule-cta .btn {
+    width: 100%;
+    padding: 18px 40px;
+  }
+
+  .programs-cta .btn {
+    width: 100%;
+    padding: 18px 40px;
+  }
+
+  .hero-buttons .btn {
+    width: 100%;
+    max-width: 320px;
+    padding: 18px 40px;
+  }
+}
+
+/* ===== Card Hover Glow Enhancement ===== */
+.card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(200,168,78,0.06) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.card:hover::after {
+  opacity: 1;
+}
+
+/* ===== Instructor Card Image Shimmer ===== */
+.instructor-card img {
+  position: relative;
+}
+
+.instructor-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 300px;
+  background: linear-gradient(90deg, transparent, rgba(200,168,78,0.05), transparent);
+  transition: left 0.6s ease;
+  pointer-events: none;
+}
+
+.instructor-card:hover::after {
+  left: 150%;
+}
+
+/* ===== Section Title Fade Line ===== */
+.section-title::after {
+  transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.section-title.visible::after {
+  width: 80px;
+}
+
+/* ===== Form Field Focus Label Shift ===== */
+.form-field label {
+  transition: color var(--transition-fast);
+}
+
+.form-field:focus-within label {
+  color: var(--color-gold);
 }

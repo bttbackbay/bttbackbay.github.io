@@ -45,11 +45,14 @@
     "url": "https://bttbackbay.github.io",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "Back Bay",
+      "streetAddress": "400 Commonwealth Ave #G2",
       "addressLocality": "Boston",
       "addressRegion": "MA",
+      "postalCode": "02215",
       "addressCountry": "US"
     },
+    "telephone": "+1-617-450-0001",
+    "email": "johnny@bttbackbay.com",
     "priceRange": "$$",
     "amenityFeature": [
       "Brazilian Jiu-Jitsu Classes",
@@ -220,6 +223,21 @@
     <section id="schedule" class="schedule" aria-labelledby="schedule-title" data-nav-color="var(--color-nav-bg)">
       <div class="container">
         <h2 id="schedule-title" class="section-title">Class Schedule</h2>
+
+        <!-- Mobile Day Tabs -->
+        <div class="schedule-tabs" role="tablist" aria-label="Filter schedule by day">
+          <button class="schedule-tab active" role="tab" aria-selected="true" data-day="all">All</button>
+          <button class="schedule-tab" role="tab" aria-selected="false" data-day="1">Mon</button>
+          <button class="schedule-tab" role="tab" aria-selected="false" data-day="2">Tue</button>
+          <button class="schedule-tab" role="tab" aria-selected="false" data-day="3">Wed</button>
+          <button class="schedule-tab" role="tab" aria-selected="false" data-day="4">Thu</button>
+          <button class="schedule-tab" role="tab" aria-selected="false" data-day="5">Fri</button>
+          <button class="schedule-tab" role="tab" aria-selected="false" data-day="6">Sat</button>
+          <button class="schedule-tab" role="tab" aria-selected="false" data-day="7">Sun</button>
+        </div>
+
+        <!-- Mobile Card View -->
+        <div class="schedule-cards" role="tabpanel" aria-label="Classes for selected day"></div>
 
         <div class="schedule-table-container">
           <table class="schedule-table" role="table" aria-label="Weekly class schedule">
@@ -562,7 +580,7 @@
 
               <div class="form-field">
                 <label for="phone">Phone Number</label>
-                <input type="tel" id="phone" name="phone" placeholder="(617) 555-1234">
+                <input type="tel" id="phone" name="phone" placeholder="(617) 450-0001">
               </div>
 
               <div class="form-field">
@@ -598,7 +616,7 @@
               </div>
               <div class="contact-info-content">
                 <h4>Location</h4>
-                <p>Back Bay, Boston, MA 02116</p>
+                <p>400 Commonwealth Ave #G2, Boston, MA 02215</p>
               </div>
             </div>
 
@@ -608,7 +626,7 @@
               </div>
               <div class="contact-info-content">
                 <h4>Phone</h4>
-                <p><a href="tel:+16175551234">(617) 555-1234</a></p>
+                <p><a href="tel:+16174500001">(617) 450-0001</a></p>
               </div>
             </div>
 
@@ -618,7 +636,7 @@
               </div>
               <div class="contact-info-content">
                 <h4>Email</h4>
-                <p><a href="mailto:info@bttbackbay.com">info@bttbackbay.com</a></p>
+                <p><a href="mailto:johnny@bttbackbay.com">johnny@bttbackbay.com</a></p>
               </div>
             </div>
 
@@ -626,29 +644,30 @@
               <h4>Hours of Operation</h4>
               <table>
                 <tr>
-                  <td>Monday - Friday</td>
-                  <td>6:00 AM - 9:00 PM</td>
+                  <td>Monday - Thursday</td>
+                  <td>6:00 AM - 8:00 PM</td>
+                </tr>
+                <tr>
+                  <td>Friday</td>
+                  <td>12:00 PM - 8:00 PM</td>
                 </tr>
                 <tr>
                   <td>Saturday</td>
-                  <td>8:00 AM - 2:00 PM</td>
+                  <td>9:00 AM - 2:00 PM</td>
                 </tr>
                 <tr>
                   <td>Sunday</td>
-                  <td>Closed</td>
+                  <td>10:00 AM - 12:00 PM</td>
                 </tr>
               </table>
             </div>
 
             <div class="contact-social">
+              <a href="https://goo.gl/maps/oG9PhQjmZnypgiDH7" target="_blank" rel="noopener noreferrer" aria-label="Find us on Google Maps">
+                <svg><use href="#icon-map-pin"/></svg>
+              </a>
               <a href="https://instagram.com/bttbackbay" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram">
                 <svg><use href="#icon-instagram"/></svg>
-              </a>
-              <a href="https://facebook.com/bttbackbay" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Facebook">
-                <svg><use href="#icon-facebook"/></svg>
-              </a>
-              <a href="https://youtube.com/@bttbackbay" target="_blank" rel="noopener noreferrer" aria-label="Subscribe on YouTube">
-                <svg><use href="#icon-youtube"/></svg>
               </a>
             </div>
           </div>
@@ -666,14 +685,11 @@
           <div class="footer-logo">BTT Back Bay</div>
           <p class="footer-description">World-class Brazilian Jiu-Jitsu training in the heart of Boston's Back Bay. Transform your life through martial arts.</p>
           <div class="footer-social">
+            <a href="https://goo.gl/maps/oG9PhQjmZnypgiDH7" target="_blank" rel="noopener noreferrer" aria-label="Find us on Google Maps">
+              <svg><use href="#icon-map-pin"/></svg>
+            </a>
             <a href="https://instagram.com/bttbackbay" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram">
               <svg><use href="#icon-instagram"/></svg>
-            </a>
-            <a href="https://facebook.com/bttbackbay" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Facebook">
-              <svg><use href="#icon-facebook"/></svg>
-            </a>
-            <a href="https://youtube.com/@bttbackbay" target="_blank" rel="noopener noreferrer" aria-label="Subscribe on YouTube">
-              <svg><use href="#icon-youtube"/></svg>
             </a>
           </div>
         </div>
@@ -694,24 +710,29 @@
           <h3 class="footer-heading">Contact</h3>
           <div class="footer-contact-item">
             <svg><use href="#icon-map-pin"/></svg>
-            <p>Back Bay, Boston, MA 02116</p>
+            <p>400 Commonwealth Ave #G2, Boston, MA 02215</p>
           </div>
           <div class="footer-contact-item">
             <svg><use href="#icon-phone"/></svg>
-            <p><a href="tel:+16175551234">(617) 555-1234</a></p>
+            <p><a href="tel:+16174500001">(617) 450-0001</a></p>
           </div>
           <div class="footer-contact-item">
             <svg><use href="#icon-mail"/></svg>
-            <p><a href="mailto:info@bttbackbay.com">info@bttbackbay.com</a></p>
+            <p><a href="mailto:johnny@bttbackbay.com">johnny@bttbackbay.com</a></p>
           </div>
         </div>
       </div>
 
       <div class="footer-bottom">
-        <p>&copy; <span id="copyright-year">2025</span> BTT Back Bay. All rights reserved. | Brazilian Top Team&reg; is a registered trademark.</p>
+        <p>&copy; <span id="copyright-year">2026</span> BTT Back Bay. All rights reserved. | Brazilian Top Team&reg; is a registered trademark.</p>
       </div>
     </div>
   </footer>
+
+  <!-- Scroll to Top -->
+  <button class="scroll-top" aria-label="Scroll to top" tabindex="0">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="18,15 12,9 6,15"></polyline></svg>
+  </button>
 
   <!-- JavaScript -->
   <script src="/js/main.js" defer></script>
